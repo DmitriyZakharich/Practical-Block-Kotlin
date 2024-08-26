@@ -1,4 +1,4 @@
-package com.example.practicalblockkotlin.coroutines
+package com.example.practicalblockkotlin.topic_2_coroutines
 
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.awaitClose

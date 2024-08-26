@@ -1,6 +1,7 @@
-package com.example.practicalblockkotlin
+package com.example.practicalblockkotlin.topic_1_kotlin
 
 import android.util.Log
+import com.example.practicalblockkotlin.TAG
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

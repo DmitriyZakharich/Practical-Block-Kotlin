@@ -1,4 +1,4 @@
-package com.example.practicalblockkotlin
+package com.example.practicalblockkotlin.topic_1_kotlin
 
 fun shakerSort(list: MutableList<Int?>?): List<Int?>? {
     if (list == null) {

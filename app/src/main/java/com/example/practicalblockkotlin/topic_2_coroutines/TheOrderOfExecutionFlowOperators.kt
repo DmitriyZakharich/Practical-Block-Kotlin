@@ -1,4 +1,4 @@
-package com.example.practicalblockkotlin.coroutines
+package com.example.practicalblockkotlin.topic_2_coroutines
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-/*
+/**
     Задача по flow
     Напротив каждой строки написать диспатчер и порядок в котором вызывается цепочка
  */

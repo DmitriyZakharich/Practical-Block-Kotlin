@@ -1,6 +1,7 @@
-package com.example.practicalblockkotlin
+package com.example.practicalblockkotlin.topic_1_kotlin
 
 import android.util.Log
+import com.example.practicalblockkotlin.TAG
 
 class ListOperator {
     fun execute(list: List<Any>) {
