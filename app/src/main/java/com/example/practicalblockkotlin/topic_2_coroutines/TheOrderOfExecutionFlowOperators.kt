@@ -2,6 +2,7 @@ package com.example.practicalblockkotlin.topic_2_coroutines
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flatMapMerge
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
@@ -17,15 +18,16 @@ import kotlinx.coroutines.launch
 
 class TheOrderOfExecutionFlowOperators {
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     fun myFlow() {
         CoroutineScope(context = Dispatchers.Main).launch() {
-            doAction("doAction")  //  1   Dispatchers.Main.immediate
+            doAction("doAction")  //  1   Dispatchers.Main
 
             flowOf("Hey")   //  3  Dispatchers.Default
                 .onEach { doAction("onEach") }  //  4  Dispatchers.Default
                 .map { it.length }  //  5   Dispatchers.Default
                 .onStart { doAction("onStart") } // 6  Dispatchers.Default
-                .flowOn(Dispatchers.Default)    //  2 Main.immediate -> Default
+                .flowOn(Dispatchers.Default)    //  2 Dispatchers.Main -> Default
 
                 .flatMapMerge { //  8  Dispatchers.IO
                     doAction("flatMapMerge")  //    9   Dispatchers.IO
@@ -34,8 +36,8 @@ class TheOrderOfExecutionFlowOperators {
                         .onEach { doAction("onEach") }  //  12  Dispatchers.IO
                 }
                 .flowOn(Dispatchers.IO) //  7   Default -> IO
-                .collect {  //  12  Dispatchers.Main.immediate
-                    doAction("collect")  // 13  Dispatchers.Main.immediate
+                .collect {  //  12  Dispatchers.Main
+                    doAction("collect")  // 13  Dispatchers.Main
                 }
         }
     }
